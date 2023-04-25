@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [Header("Components")]
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     [Header("Layer Masks/Groun Check")]
     [SerializeField] private LayerMask groundLayer;
@@ -16,10 +16,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float firstAcceleration = 5f;
     [SerializeField] private float secondAcceleration = 20f;
     [SerializeField] private float thirdAcceleration = 75f;
-    [SerializeField] private float maxSpeed;
+    [SerializeField] public float maxSpeed;
     [SerializeField] private float firstSpeed = 10f;
     [SerializeField] private float secondSpeed = 40f;
-    [SerializeField] private float thirdSpeed = 148f;
+    [SerializeField] public float thirdSpeed = 148f;
     [SerializeField] private float groundlinearDrag = 5f;
     private float horizontalDirection;
     public float directionTimer = 0.5f;
@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     private void InputTimer()
     {
         directionTimer -= Time.deltaTime;
-        Debug.Log(directionTimer.ToString());
+        //Debug.Log(directionTimer.ToString());
         if (directionTimer <= 0.0f && horizontalDirection == 0)
         {
             maxSpeed = firstSpeed;
@@ -123,12 +123,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyAirLinearDrag()
     {
-        rb.drag = 0f;  //set drag to air linear drag
+        rb.drag = 0.5f;  //set drag to air linear drag
     }
 
     private void Jump()
     {
-        //rb.velocity = new Vector2(rb.velocity.x, 0f); //halt vertical movement
+        rb.velocity = new Vector2(rb.velocity.x, 0f); //halt vertical movement
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); //apply jumpforce upward
     }
 
