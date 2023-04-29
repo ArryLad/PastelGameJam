@@ -14,7 +14,7 @@ public class Stomp : MonoBehaviour
             //kill enemy
             enemy.Death();
             //apply stompBounce to player
-            movement.stompBounce();
+            //movement.stompBounce();
         }
     }
 }
