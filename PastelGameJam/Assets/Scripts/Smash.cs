@@ -13,9 +13,9 @@ public class Smash : MonoBehaviour
     {
         Brick brick = other.GetComponent<Brick>();
 
-        if (brick != null && movement.rb.velocity.x >= movement.thirdSpeed)
+        /*if (brick != null && movement.rb.velocity.x >= movement.thirdSpeed)
         {
             brick.brickBreak();
-        }
+        }*/
     }
 }
